@@ -1,5 +1,5 @@
 NAME		= push_swap
-SRC			= main.c
+SRC			= main.c input_parser.c swap_ops.c rotate_ops.c
 HDR			= header.h
 LIB_SRC		= ./libft/
 LIB_NAME	= libft.a

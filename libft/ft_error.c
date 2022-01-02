@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjada <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/30 18:29:44 by rjada             #+#    #+#             */
-/*   Updated: 2021/11/30 18:29:47 by rjada            ###   ########.fr       */
+/*   Created: 2022/01/02 22:08:18 by rjada             #+#    #+#             */
+/*   Updated: 2022/01/02 22:08:58 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADER_H
-# define HEADER_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-# define ERR_MSG "Error"
-
-typedef struct s_stack
+void	ft_error(char *errmsg)
 {
-	int				val;
-	struct s_stack	*next;
-}	t_stack;
-
-#endif
+	ft_putendl_fd(errmsg, STDERR);
+	exit(EXIT_FAILURE);
+}
