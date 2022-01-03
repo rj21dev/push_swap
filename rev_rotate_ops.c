@@ -1,52 +1,61 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_ops.c                                         :+:      :+:    :+:   */
+/*   rev_rotate_ops.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/02 22:23:26 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/03 21:11:13 by rjada            ###   ########.fr       */
+/*   Created: 2022/01/02 23:03:10 by rjada             #+#    #+#             */
+/*   Updated: 2022/01/03 21:45:15 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/libft.h"
 
-static void	swap2upper(t_list **top)
+static void	rev_rotate_stack(t_list **top)
 {
-	t_list	*second;
-	
-	second = *top;
-	*top = (*top)->next;
-	second->next = (*top)->next;
-	(*top)->next = second;
+	t_list	*first;
+	t_list	*before_last;
+	t_list	*last;
+
+	first = *top;
+	last = (*top)->next;
+	while (last->next)
+	{
+		if (!last->next->next)
+			before_last = last;
+		last = last->next;
+	}
+	last->next = first;
+	*top = last;
+	before_last->next = NULL;
 }
 
-void	swap_a(t_list **stack_a)
+void	rev_rot_a(t_list **stack_a)
 {
 	if (*stack_a && (*stack_a)->next)
 	{
-		swap2upper(stack_a);
-		ft_putendl_fd("sa", STDOUT);
+		rev_rotate_stack(stack_a);
+		ft_putendl_fd("rra", STDOUT);
 	}
 }
 
-void	swap_b(t_list **stack_b)
+void	rev_rot_b(t_list **stack_b)
 {
 	if (*stack_b && (*stack_b)->next)
 	{
-		swap2upper(stack_b);
-		ft_putendl_fd("sb", STDOUT);
+		rev_rotate_stack(stack_b);
+		ft_putendl_fd("rrb", STDOUT);
 	}
 }
 
-void	swap_ab(t_list **stack_a, t_list **stack_b)
+void	rev_rot_ab(t_list **stack_a, t_list **stack_b)
 {
 	if (*stack_a && *stack_b && (*stack_a)->next && (*stack_b)->next)
 	{
-		swap2upper(stack_a);
-		swap2upper(stack_b);
-		ft_putendl_fd("ss", STDOUT);
+		rev_rotate_stack(stack_a);
+		rev_rotate_stack(stack_b);
+		ft_putendl_fd("rrr", STDOUT);
 	}
 }

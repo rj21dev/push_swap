@@ -5,14 +5,18 @@ void	args_validation(size_t argc, char **argv)
 {
 	size_t	i;
 	size_t	j;
+	size_t	len;
 
 	i = 1;
 	while (i < argc)
 	{
+		len = ft_strlen(argv[i]);
+		if (!len)
+			exit(EXIT_SUCCESS);
 		j = 0;
 		while(argv[i][j])
 		{
-			if (!ft_isdigit(argv[i][j]) && argv[i][j] != '-')
+			if (!ft_isdigit(argv[i][j]) && argv[i][j] != '-' && argv[i][j] != ' ')
 				ft_error(ERR_MSG);
 			++j;
 		}
