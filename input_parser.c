@@ -7,6 +7,8 @@ void	args_validation(size_t argc, char **argv)
 	size_t	j;
 	size_t	len;
 
+	if (argc < 2)
+		exit(EXIT_SUCCESS);
 	i = 1;
 	while (i < argc)
 	{
@@ -16,7 +18,7 @@ void	args_validation(size_t argc, char **argv)
 		j = 0;
 		while(argv[i][j])
 		{
-			if (!ft_isdigit(argv[i][j]) && argv[i][j] != '-' && argv[i][j] != ' ')
+			if (!(ft_isdigit(argv[i][j]) || argv[i][j] == ' ' || (argv[i][j] == '-' && ft_isdigit(argv[i][j + 1]))) || (argv[i][j] == ' ' &&  argc != 2))
 				ft_error(ERR_MSG);
 			++j;
 		}
