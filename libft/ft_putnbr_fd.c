@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjada <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 15:16:23 by rjada             #+#    #+#             */
-/*   Updated: 2021/10/10 19:09:28 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/05 22:44:59 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	ft_putnbr_fd(int n, int fd)
 {
 	char	c;
 
-	if (n == -2147483648)
+	if (n == MIN_OF_INT)
 	{
-		write(fd, "-2147483648", 11);
+		write(fd, "-2147483648", sizeof(char) * 11);
 		return ;
 	}
 	if (n < 0)

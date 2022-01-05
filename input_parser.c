@@ -1,7 +1,7 @@
 #include "push_swap.h"
 #include "libft/libft.h"
 
-void	args_validation(size_t argc, char **argv)
+static void	args_validation(size_t argc, char **argv)
 {
 	size_t	i;
 	size_t	j;
@@ -26,30 +26,76 @@ void	args_validation(size_t argc, char **argv)
 	}
 }
 
-void	check_int_bounds(size_t argc, char **argv)
+static void	check_int_bounds(t_list *stack)
 {
-	size_t	i;
 	long	num;
 
-	i = 1;
-	while (i < argc)
+	while (stack)
 	{
-		num = ft_atol(argv[i]);
+		num = ft_atol(stack->content);
 		if (num < MIN_OF_INT || num > MAX_OF_INT)
 			ft_error(ERR_MSG);
-		++i;
+		stack = stack->next;
 	}
 }
 
-void	check_duplicates(size_t argc, char **argv)
+static void	check_duplicates(t_list *stack)
+{
+	while (stack->next)
+	{
+		if (ft_atoi(stack->content) == ft_atoi(stack->next->content))
+			ft_error(ERR_MSG);
+		stack = stack->next;
+	}
+}
+
+static int	is_composite_arg(char *arg)
 {
 	size_t	i;
+	size_t	space;
+	size_t	digit;
 
-	i = 1;
-	while (i < argc - 1)
+	space = 0;
+	digit = 0;
+	i = 0;
+	while (arg[i])
 	{
-		if (ft_strncmp(argv[i], argv[i + 1], 11) == 0)
-				ft_error(ERR_MSG);
+		if (arg[i] == ' ')
+			++space;
+		if (ft_isdigit(arg[i]))
+			++digit;
+		if (space && digit)
+			return (1);
 		++i;
 	}
+	return (0);
+}
+
+void	init_main_stack(t_list **stack_a, size_t argc, char **argv)
+{
+	size_t	i;
+	size_t	j;
+	char	**composite_arg;
+
+	args_validation(argc, argv);
+	i = 1;
+	while (i < argc)
+	{
+		if (is_composite_arg(argv[i]))
+		{
+			j = 0;
+			composite_arg = ft_split(argv[i], ' ');
+			while (composite_arg[j])
+			{
+				ft_lstadd_back(stack_a, ft_lstnew(ft_strdup(composite_arg[j])));
+				++j;
+			}
+			ft_split_free(composite_arg);
+		}
+		else
+			ft_lstadd_back(stack_a, ft_lstnew(ft_strdup(argv[i])));
+		++i;
+	}
+	check_int_bounds(*stack_a);
+	check_duplicates(*stack_a);
 }

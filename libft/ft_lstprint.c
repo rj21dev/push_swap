@@ -6,7 +6,7 @@
 /*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 22:12:02 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/02 22:19:49 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/05 21:44:33 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_lstprint(t_list *lst)
 {
+	if (!lst)
+		ft_putendl_fd("NULL or empty.", STDOUT);
 	while (lst)
 	{
 		ft_putendl_fd(lst->content, STDOUT);

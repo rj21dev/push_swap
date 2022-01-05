@@ -6,7 +6,7 @@
 /*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 18:29:44 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/03 21:49:20 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/05 22:04:07 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@
 
 # define ERR_MSG "Error"
 
-void	args_validation(size_t argc, char **argv);
-void	check_int_bounds(size_t argc, char **argv);
-void	check_duplicates(size_t argc, char **argv);
+void	init_main_stack(t_list **stack_a, size_t argc, char **argv);
 
 void	swap_a(t_list **stack_a);
 void	swap_b(t_list **stack_b);
