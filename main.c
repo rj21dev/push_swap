@@ -6,7 +6,7 @@
 /*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 22:12:24 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/07 22:09:04 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/08 18:18:55 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,21 +57,50 @@ int find_mid(t_list *stack)
 	return (mid);
 }
 
+t_list	*ft_lstlast(t_list *lst)
+{
+	while (lst)
+	{
+		if (!lst->next)
+			return (lst);
+		lst = lst->next;
+	}
+	return (NULL);
+}
+
 void	midpoint_algo(t_list **stack_a, t_list **stack_b)
 {
-	int	mid = find_mid(*stack_a);
-	//int	size = ft_lstsize(*stack_a);
+	int		mid;
+	int		size;
+	int		val;
+	int		chunk;
+	t_list	*last;
 	
-		int	val = ft_atoi((*stack_a)->content);
-		if (val < mid)
-			push_b(stack_a, stack_b);
-		else
+	size = ft_lstsize(*stack_a);
+	while (size > 2)
+	{
+		mid = find_mid(*stack_a);
+		chunk = size / 2;
+		while (chunk)
 		{
-			// if val_last < mid then rra else ra
-		}	
-			
-	///	size = ft_lstsize(*stack_a);
-
+			val = ft_atoi((*stack_a)->content); 
+			if (val < mid)
+			{
+				push_b(stack_a, stack_b);
+				--chunk;
+			}
+			else
+			{
+				last = ft_lstlast(*stack_a);
+				val = ft_atoi(last->content);
+				if (val < mid)
+					rev_rot_a(stack_a);
+				else
+					rot_a(stack_a);
+			}
+		}
+		size = ft_lstsize(*stack_a);
+	}
 }
 
 int	main(int argc, char **argv)
@@ -87,8 +116,14 @@ int	main(int argc, char **argv)
 //	ft_putchar_fd('\n', STDOUT);
 
 
-	if (!is_sorted(stack_a))
-		make_sort(&stack_a, &stack_b, ft_lstsize(stack_a));
+	// if (!is_sorted(stack_a))
+	// 	make_sort(&stack_a, &stack_b, ft_lstsize(stack_a));
+
+	midpoint_algo(&stack_a, &stack_b);
+	ft_lstprint(stack_a);
+	ft_putendl_fd("", STDOUT);
+	ft_lstprint(stack_b);
+
 	// {
 	// 	if (2 == ft_lstsize(stack_a))
 	// 		swap_a(&stack_a);
