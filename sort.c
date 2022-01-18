@@ -6,13 +6,13 @@
 /*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 22:09:21 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/07 22:12:17 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/18 16:22:44 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	sort3(t_list **stack)
+void	sort3(t_list **stack)
 {
 	int	min;
 	int	max;
