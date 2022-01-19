@@ -6,7 +6,7 @@
 /*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 22:12:24 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/18 20:47:13 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/19 20:35:57 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,14 @@ void	midpoint_algo(t_list **stack_a, t_list **stack_b)
 	t_list	*last;
 	
 	size = ft_lstsize(*stack_a);
-	while (size > 3)
+	while (size > 2)
 	{
 		mid = find_mid(*stack_a);
 		chunk = size / 2;
 		while (chunk)
 		{
 			val = ft_atoi((*stack_a)->content); 
-			if (val < mid)
+				if (val < mid)
 			{
 				push_b(stack_a, stack_b);
 				--chunk;
@@ -105,7 +105,29 @@ void	midpoint_algo(t_list **stack_a, t_list **stack_b)
 
 void	midpoint_new(t_list **stack_a, t_list **stack_b)
 {
-	
+	int	val;
+	int	min;
+	int	mid;
+	int	max;
+	// int	size_a;
+
+	min = find_min(*stack_a);
+	mid = find_mid(*stack_a);
+	max = find_max(*stack_a);
+	// size_a = ft_lstsize(*stack_a);
+	while (ft_lstsize(*stack_a) > 3)
+	{
+		val = ft_atoi((*stack_a)->content);
+		if (val != min && val != mid && val != max)
+		{
+			push_b(stack_a, stack_b);
+			if (val > mid)
+				rot_b(stack_b);
+		}
+		else
+			rot_a(stack_a);
+		// --size_a;
+	}
 }
 
 void	mid_algo_rec(t_list **stack_a, t_list **stack_b, int chunk)
@@ -211,7 +233,9 @@ void	find_mid_pos_to_ins(t_list *stack_a, int num, int *steps_a)
 		++(*steps_a);
 		stack_a = stack_a->next;
 	}
-	if (*steps_a >= (size_a + 1) / 2)
+	if (*steps_a == size_a)
+		*steps_a = 0;
+	else if (*steps_a >= (size_a + 1) / 2)
 		*steps_a = -1 * (size_a - (*steps_a));
 }
 
@@ -222,15 +246,22 @@ int	ft_abs(int n)
 	return (n);
 }
 
+void	define_sign_of_steps_b(int index, int size_b, int *steps_b)
+{
+	if (index >= (size_b + 1) / 2)
+			*steps_b = -1 * (size_b - index);
+}
+
 void	count_rotates(t_list *stack_a, t_list *stack_b, int *rotates_a, int *rotates_b)
 {
 	int	steps_a;
 	int	steps_b;
 	int	num;
 	int	size_b;
+	int	index;
 
 	size_b = ft_lstsize(stack_b);
-	steps_b = 0;
+	index = 0;
 	while (stack_b)
 	{
 		num = ft_atoi(stack_b->content);
@@ -238,17 +269,15 @@ void	count_rotates(t_list *stack_a, t_list *stack_b, int *rotates_a, int *rotate
 			find_minimax_pos(stack_a, num, &steps_a);
 		else
 			find_mid_pos_to_ins(stack_a, num, &steps_a);
+		steps_b = index;
+		define_sign_of_steps_b(index, size_b, &steps_b);
 		if (!steps_b || ft_abs(*rotates_a) + ft_abs(*rotates_b) > ft_abs(steps_a) + ft_abs(steps_b))
 		{
 			*rotates_a = steps_a;
-			if (steps_b < (size_b + 1) / 2)
-				*rotates_b = steps_b;
-			else
-				*rotates_b = -1 * (size_b - steps_b);
 			*rotates_b = steps_b;
 		}
 		stack_b = stack_b->next;
-		++steps_b;
+		++index;
 	}
 }
 
@@ -287,7 +316,7 @@ void	synchro_rotates(t_list **stack_a, t_list **stack_b, int rotates_a, int rota
 	if (rotates_a >= 0 && rotates_b >= 0)
 	{
 		multi_rotates_both(stack_a, stack_b, min(rotates_a, rotates_b), rot_ab);
-		if (rotates_a < rotates_b)
+		if (rotates_a <= rotates_b)
 			multi_rotates_one(stack_b, rotates_b - rotates_a, rot_b);
 		else
 			multi_rotates_one(stack_a, rotates_a - rotates_b, rot_a);
@@ -295,7 +324,7 @@ void	synchro_rotates(t_list **stack_a, t_list **stack_b, int rotates_a, int rota
 	else
 	{
 		multi_rotates_both(stack_a, stack_b, min(abs_a, abs_b), rev_rot_ab);
-		if (abs_a < abs_b)
+		if (abs_a <= abs_b)
 			multi_rotates_one(stack_b, abs_b - abs_a, rev_rot_b);
 		else
 			multi_rotates_one(stack_a, abs_a - abs_b, rev_rot_a);
@@ -311,8 +340,8 @@ void	discrete_rotates(t_list **stack_a, t_list **stack_b, int rotates_a, int rot
 	}
 	else
 	{
-		multi_rotates_one(stack_a, ft_abs(rotates_a), rev_rot_a);
 		multi_rotates_one(stack_b, rotates_b, rot_b);
+		multi_rotates_one(stack_a, ft_abs(rotates_a), rev_rot_a);
 	}
 }
 
@@ -333,17 +362,24 @@ void	big_sort(t_list **stack_a, t_list **stack_b)
 {
 	int	rotates_a;
 	int	rotates_b;
-	// int	size_a;
+	int	size_a;
 
 	rotates_a = 0;
 	rotates_b = 0;
-	midpoint_algo(stack_a, stack_b);
-	// size_a = ft_lstsize(*stack_a);
-	// while (size_a > 3)
-	// {
-	// 	push_b(stack_a, stack_b);
-	// 	--size_a;
-	// }
+	// midpoint_algo(stack_a, stack_b);
+
+	// ft_lstprint(*stack_a);
+	// ft_putendl_fd("", STDOUT);
+	// ft_lstprint(*stack_b);
+	// return ;
+
+	size_a = ft_lstsize(*stack_a);
+	while (size_a > 3)
+	{
+		push_b(stack_a, stack_b);
+		--size_a;
+	}
+	
 	if (!is_sorted(*stack_a))
 		sort3(stack_a);
 	while (*stack_b)
@@ -386,7 +422,8 @@ int	main(int argc, char **argv)
 	// multi_rotates_one(&stack_a, 3, rev_rot_a);
 	// ft_lstprint(stack_a);
 	// ft_putendl_fd("", STDOUT);
-	// ft_lstprint(stack_b);
+	// // ft_lstprint(stack_b);
+	// printf("%i\n", ft_lstsize(stack_a));
 
 	// {
 	// 	if (2 == ft_lstsize(stack_a))
