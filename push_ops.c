@@ -6,7 +6,7 @@
 /*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 21:48:19 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/03 21:48:32 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/20 18:04:52 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static void	pop_and_push(t_list **src, t_list **dest)
 {
-	t_list *pop;
+	t_list	*pop;
 
 	pop = *src;
 	*src = (*src)->next;
@@ -24,7 +24,7 @@ static void	pop_and_push(t_list **src, t_list **dest)
 	ft_lstdelone(pop, free);
 }
 
-void	push_b(t_list **stack_a, t_list **stack_b)
+void	pb(t_list **stack_a, t_list **stack_b)
 {
 	if (*stack_a)
 	{
@@ -33,7 +33,7 @@ void	push_b(t_list **stack_a, t_list **stack_b)
 	}
 }
 
-void	push_a(t_list **stack_a, t_list **stack_b)
+void	pa(t_list **stack_a, t_list **stack_b)
 {
 	if (*stack_b)
 	{

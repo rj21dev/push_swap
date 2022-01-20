@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input_parser.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/20 16:51:12 by rjada             #+#    #+#             */
+/*   Updated: 2022/01/20 17:10:08 by rjada            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-#include "libft/libft.h"
 
 static void	args_validation(size_t argc, char **argv)
 {
@@ -16,9 +27,11 @@ static void	args_validation(size_t argc, char **argv)
 		if (!len)
 			exit(EXIT_SUCCESS);
 		j = 0;
-		while(argv[i][j])
+		while (argv[i][j])
 		{
-			if (!(ft_isdigit(argv[i][j]) || argv[i][j] == ' ' || (argv[i][j] == '-' && ft_isdigit(argv[i][j + 1]))) || (argv[i][j] == ' ' &&  argc != 2))
+			if (!(ft_isdigit(argv[i][j]) || argv[i][j] == ' '
+				|| (argv[i][j] == '-' && ft_isdigit(argv[i][j + 1])))
+				|| (argv[i][j] == ' ' && argc != 2))
 				ft_error(ERR_MSG);
 			++j;
 		}

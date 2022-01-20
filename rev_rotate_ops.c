@@ -6,7 +6,7 @@
 /*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 23:03:10 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/03 21:45:15 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/20 18:22:14 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,21 @@
 
 static void	rev_rotate_stack(t_list **top)
 {
-	t_list	*first;
 	t_list	*before_last;
 	t_list	*last;
 
-	first = *top;
-	last = (*top)->next;
+	last = *top;
 	while (last->next)
 	{
-		if (!last->next->next)
-			before_last = last;
+		before_last = last;
 		last = last->next;
 	}
-	last->next = first;
+	last->next = *top;
 	*top = last;
 	before_last->next = NULL;
 }
 
-void	rev_rot_a(t_list **stack_a)
+void	rra(t_list **stack_a)
 {
 	if (*stack_a && (*stack_a)->next)
 	{
@@ -41,7 +38,7 @@ void	rev_rot_a(t_list **stack_a)
 	}
 }
 
-void	rev_rot_b(t_list **stack_b)
+void	rrb(t_list **stack_b)
 {
 	if (*stack_b && (*stack_b)->next)
 	{
@@ -50,7 +47,7 @@ void	rev_rot_b(t_list **stack_b)
 	}
 }
 
-void	rev_rot_ab(t_list **stack_a, t_list **stack_b)
+void	rrr(t_list **stack_a, t_list **stack_b)
 {
 	if (*stack_a && *stack_b && (*stack_a)->next && (*stack_b)->next)
 	{

@@ -6,7 +6,7 @@
 /*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 21:52:38 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/07 21:53:46 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/20 18:09:55 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	is_sorted(t_list *stack)
 	while (stack->next)
 	{
 		if (ft_atoi(stack->content) > ft_atoi(stack->next->content))
-			return(0);
+			return (0);
 		stack = stack->next;
 	}
 	return (1);
@@ -27,7 +27,7 @@ int	find_min(t_list *stack)
 {
 	int	min;
 	int	current;
-	
+
 	min = ft_atoi(stack->content);
 	while (stack->next)
 	{
@@ -43,7 +43,7 @@ int	find_max(t_list *stack)
 {
 	int	max;
 	int	current;
-	
+
 	max = ft_atoi(stack->content);
 	while (stack->next)
 	{
@@ -55,18 +55,16 @@ int	find_max(t_list *stack)
 	return (max);
 }
 
-int	min_pos(t_list *stack, int min)
+int	ft_abs(int n)
 {
-	int	pos;
-	
-	pos = 0;
-	while (stack->next)
-	{
-		int	current = ft_atoi(stack->content);
-		if (current == min)
-			break;
-		stack = stack->next;
-		++pos;
-	}
-	return (pos);
+	if (n < 0)
+		return (-n);
+	return (n);
+}
+
+int	min(int a, int b)
+{
+	if (a < b)
+		return (a);
+	return (b);
 }

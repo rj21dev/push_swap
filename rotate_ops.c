@@ -6,7 +6,7 @@
 /*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 23:03:10 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/03 21:43:13 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/20 18:22:29 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	rotate_stack(t_list **top)
 	*top = second;
 }
 
-void	rot_a(t_list **stack_a)
+void	ra(t_list **stack_a)
 {
 	if (*stack_a && (*stack_a)->next)
 	{
@@ -38,7 +38,7 @@ void	rot_a(t_list **stack_a)
 	}
 }
 
-void	rot_b(t_list **stack_b)
+void	rb(t_list **stack_b)
 {
 	if (*stack_b && (*stack_b)->next)
 	{
@@ -47,7 +47,7 @@ void	rot_b(t_list **stack_b)
 	}
 }
 
-void	rot_ab(t_list **stack_a, t_list **stack_b)
+void	rr(t_list **stack_a, t_list **stack_b)
 {
 	if (*stack_a && *stack_b && (*stack_a)->next && (*stack_b)->next)
 	{

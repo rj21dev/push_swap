@@ -6,7 +6,7 @@
 /*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 22:23:26 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/03 21:11:13 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/20 18:09:14 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 static void	swap2upper(t_list **top)
 {
 	t_list	*second;
-	
+
 	second = *top;
 	*top = (*top)->next;
 	second->next = (*top)->next;
 	(*top)->next = second;
 }
 
-void	swap_a(t_list **stack_a)
+void	sa(t_list **stack_a)
 {
 	if (*stack_a && (*stack_a)->next)
 	{
@@ -32,7 +32,7 @@ void	swap_a(t_list **stack_a)
 	}
 }
 
-void	swap_b(t_list **stack_b)
+void	sb(t_list **stack_b)
 {
 	if (*stack_b && (*stack_b)->next)
 	{
@@ -41,7 +41,7 @@ void	swap_b(t_list **stack_b)
 	}
 }
 
-void	swap_ab(t_list **stack_a, t_list **stack_b)
+void	ss(t_list **stack_a, t_list **stack_b)
 {
 	if (*stack_a && *stack_b && (*stack_a)->next && (*stack_b)->next)
 	{
