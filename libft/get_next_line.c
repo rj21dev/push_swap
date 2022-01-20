@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjada <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 18:55:49 by rjada             #+#    #+#             */
-/*   Updated: 2021/11/30 18:55:54 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/21 00:35:32 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static char	*read_from_fd(int fd, char **remainder, char **line)
 	int		bytes_read;
 
 	len = ft_strlen(*line) + 1;
-	while (1)
+	while (TRUE)
 	{
 		bytes_read = read(fd, buf, BUFFER_SIZE);
 		buf[bytes_read] = '\0';

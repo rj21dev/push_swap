@@ -6,12 +6,11 @@
 /*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 22:23:26 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/20 18:09:14 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/21 00:57:23 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft/libft.h"
 
 static void	swap2upper(t_list **top)
 {

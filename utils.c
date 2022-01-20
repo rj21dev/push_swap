@@ -6,7 +6,7 @@
 /*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 21:52:38 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/20 18:09:55 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/21 00:37:45 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int	is_sorted(t_list *stack)
 	while (stack->next)
 	{
 		if (ft_atoi(stack->content) > ft_atoi(stack->next->content))
-			return (0);
+			return (FALSE);
 		stack = stack->next;
 	}
-	return (1);
+	return (TRUE);
 }
 
 int	find_min(t_list *stack)

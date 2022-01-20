@@ -6,7 +6,7 @@
 /*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 16:51:12 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/20 17:10:08 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/21 01:08:07 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,10 @@ static int	is_composite_arg(char *arg)
 		if (ft_isdigit(arg[i]))
 			++digit;
 		if (space && digit)
-			return (1);
+			return (TRUE);
 		++i;
 	}
-	return (0);
+	return (FALSE);
 }
 
 void	init_main_stack(t_list **stack_a, size_t argc, char **argv)

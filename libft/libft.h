@@ -6,7 +6,7 @@
 /*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 19:25:42 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/04 23:57:28 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/21 00:30:41 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+
+# define FALSE 0
+# define TRUE 1
 
 # define STDIN 0
 # define STDOUT 1

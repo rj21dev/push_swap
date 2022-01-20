@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ultoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjada <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 18:33:35 by rjada             #+#    #+#             */
-/*   Updated: 2021/11/30 18:48:05 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/21 00:35:14 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ static int	is_base_valid(char *base)
 		while (base[j])
 		{
 			if (base[i] == base[j])
-				return (0);
+				return (FALSE);
 			++j;
 		}
 		++i;
 	}
-	return (1);
+	return (TRUE);
 }

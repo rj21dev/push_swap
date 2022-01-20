@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjada <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 11:24:31 by rjada             #+#    #+#             */
-/*   Updated: 2021/10/10 19:14:14 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/21 00:34:39 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ static int	is_set(char str_pos, char const *set)
 	while (set[i])
 	{
 		if (set[i] == str_pos)
-			return (1);
+			return (TRUE);
 		i++;
 	}
-	return (0);
+	return (FALSE);
 }

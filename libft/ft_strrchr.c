@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjada <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 19:49:34 by rjada             #+#    #+#             */
-/*   Updated: 2021/10/07 19:49:38 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/21 00:34:12 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ char	*ft_strrchr(const char *s, int c)
 			return (&((char *)s)[i]);
 		--i;
 	}
-	return ((void *)0);
+	return (NULL);
 }
