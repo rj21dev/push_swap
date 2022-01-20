@@ -6,7 +6,7 @@
 /*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 22:12:24 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/20 18:19:21 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/20 18:32:35 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,14 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	init_main_stack(&stack_a, argc, argv);
 	size_a = ft_lstsize(stack_a);
-	if (2 == size_a)
-		sa(&stack_a);
-	else if (3 == size_a)
-		sort3(&stack_a);
-	else
-		sort_many(&stack_a, &stack_b);
+	if (!is_sorted(stack_a))
+	{
+		if (2 == size_a)
+			sa(&stack_a);
+		else if (3 == size_a)
+			sort3(&stack_a);
+		else
+			sort_many(&stack_a, &stack_b);
+	}
 	ft_lstclear(&stack_a, free);
 }
