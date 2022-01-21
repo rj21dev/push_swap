@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjada <rjada@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 22:12:24 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/21 14:26:18 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/21 19:17:42 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ static void	sort_many(t_list **stack_a, t_list **stack_b)
 
 	rots_a = 0;
 	rots_b = 0;
-	if (ft_lstsize(*stack_a) == 5)
+	if (ft_lstsize(*stack_a) < 50)
 	{
-		pb(stack_a, stack_b);
-		pb(stack_a, stack_b);
+		while (ft_lstsize(*stack_a) > 3)
+			pb(stack_a, stack_b);
 		sort3(stack_a);
 	}
 	else

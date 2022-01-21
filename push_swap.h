@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjada <rjada@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 18:29:44 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/21 14:42:28 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/21 19:17:45 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		is_sorted(t_list *stack);
 int		find_min(t_list *stack);
 int		find_max(t_list *stack);
 int		min(int a, int b);
-int		ft_abs(int n);
+int		are_duplicates(int *arr, int len);
 
 void	find_minimax_pos(t_list *stack_a, int num, int *steps_a);
 void	count_rotates(t_list *s_a, t_list *s_b, int *rots_a, int *rots_b);

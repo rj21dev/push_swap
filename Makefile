@@ -1,4 +1,4 @@
-HDR			= header.h checker_bonus.h
+HDR			= push_swap.h checker_bonus.h
 NAME		= push_swap
 SRC			= push_swap.c input_parser.c ops_swap.c ops_rotate.c ops_rev_rotate.c ops_push.c utils.c midpoint_algo.c rotates_count.c rotates_optimized.c
 OBJ			= $(SRC:.c=.o)
@@ -45,9 +45,9 @@ re: fclean all
 
 test:
 	git clone https://github.com/lmalki-h/push_swap_tester.git tester
-	bash tester/tester.sh ../push_swap 5 20
-	bash tester/tester.sh ../push_swap 100 20
-	bash tester/tester.sh ../push_swap 500 15
+	bash tester/tester.sh ./ 5 20
+	bash tester/tester.sh ./ 100 20
+	bash tester/tester.sh ./ 500 15
 
 simple100:
 	ARG=`ruby -e "puts (-50..49).to_a.shuffle.join(' ')"`; ./push_swap $$ARG | wc -l; ./push_swap $$ARG | ./checker $$ARG; echo "$$ARG\n"

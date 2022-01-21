@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_parser.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjada <rjada@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 16:51:12 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/21 14:39:13 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/21 19:17:16 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,24 @@ static void	check_int_bounds(t_list *stack)
 
 static void	check_duplicates(t_list *stack)
 {
-	while (stack->next)
+	int	i;
+	int	len;
+	int	*arr;
+
+	len = ft_lstsize(stack);
+	arr = (int *) ft_calloc(len, sizeof(int));
+	i = 0;
+	while (stack)
 	{
-		if (ft_atoi(stack->content) == ft_atoi(stack->next->content))
-			ft_error(ERR_MSG);
+		arr[i++] = ft_atoi(stack->content);
 		stack = stack->next;
 	}
+	if (are_duplicates(arr, len))
+	{
+		free(arr);
+		ft_error(ERR_MSG);
+	}
+	free(arr);
 }
 
 static int	is_composite_arg(char *arg)

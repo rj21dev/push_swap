@@ -6,7 +6,7 @@
 /*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 19:25:42 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/21 00:30:41 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/21 19:17:04 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
+int		ft_abs(int n);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isspace(int c);

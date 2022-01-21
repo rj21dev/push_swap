@@ -6,7 +6,7 @@
 /*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 21:52:38 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/21 00:37:45 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/21 19:18:03 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,29 @@ int	find_max(t_list *stack)
 	return (max);
 }
 
-int	ft_abs(int n)
-{
-	if (n < 0)
-		return (-n);
-	return (n);
-}
-
 int	min(int a, int b)
 {
 	if (a < b)
 		return (a);
 	return (b);
+}
+
+int	are_duplicates(int *arr, int len)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < len - 1)
+	{
+		j = i + 1;
+		while (j < len)
+		{
+			if (arr[i] == arr[j])
+				return (TRUE);
+			++j;
+		}
+		++i;
+	}
+	return (FALSE);
 }

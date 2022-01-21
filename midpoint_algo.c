@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   midpoint_algo.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjada <rjada@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:58:12 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/21 14:39:23 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/21 19:17:19 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ static int	find_mid(t_list *stack)
 	int	*arr;
 
 	len = ft_lstsize(stack);
-	arr = (int *) malloc(sizeof(int) * len);
+	arr = (int *) ft_calloc(len, sizeof(int));
+	if (!arr)
+		return (0);
 	i = 0;
 	while (stack)
 	{
