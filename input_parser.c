@@ -6,7 +6,7 @@
 /*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 16:51:12 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/21 19:17:16 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/21 19:46:10 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ static void	args_validation(size_t argc, char **argv)
 		while (argv[i][j])
 		{
 			if (!(ft_isdigit(argv[i][j]) || argv[i][j] == ' '
-				|| (argv[i][j] == '-' && ft_isdigit(argv[i][j + 1])))
-				|| (argv[i][j] == ' ' && argc != 2))
+				|| (argv[i][j] == '-' && ft_isdigit(argv[i][j + 1]))))
 				ft_error(ERR_MSG);
 			++j;
 		}
