@@ -1,60 +1,63 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
+/*   By: rjada <rjada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 23:48:36 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/21 00:59:00 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/21 15:06:55 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "checker_bonus.h"
 
 static int	do_op(t_list **stack_a, t_list **stack_b, char *op)
 {
 	if (3 == ft_strlen(op) && !ft_strncmp(op, "sa\n", ft_strlen(op)))
-		sa(stack_a);
+		sa_chk(stack_a);
 	else if (3 == ft_strlen(op) && !ft_strncmp(op, "sb\n", ft_strlen(op)))
-		sb(stack_b);
+		sb_chk(stack_b);
 	else if (3 == ft_strlen(op) && !ft_strncmp(op, "ss\n", ft_strlen(op)))
-		ss(stack_a, stack_b);
+		ss_chk(stack_a, stack_b);
 	else if (3 == ft_strlen(op) && !ft_strncmp(op, "ra\n", ft_strlen(op)))
-		ra(stack_a);
+		ra_chk(stack_a);
 	else if (3 == ft_strlen(op) && !ft_strncmp(op, "rb\n", ft_strlen(op)))
-		rb(stack_b);
+		rb_chk(stack_b);
 	else if (3 == ft_strlen(op) && !ft_strncmp(op, "rr\n", ft_strlen(op)))
-		rr(stack_a, stack_b);
+		rr_chk(stack_a, stack_b);
 	else if (4 == ft_strlen(op) && !ft_strncmp(op, "rra\n", ft_strlen(op)))
-		rra(stack_a);
+		rra_chk(stack_a);
 	else if (4 == ft_strlen(op) && !ft_strncmp(op, "rrb\n", ft_strlen(op)))
-		rrb(stack_b);
+		rrb_chk(stack_b);
 	else if (4 == ft_strlen(op) && !ft_strncmp(op, "rrr\n", ft_strlen(op)))
-		rrr(stack_a, stack_b);
+		rrr_chk(stack_a, stack_b);
 	else if (3 == ft_strlen(op) && !ft_strncmp(op, "pa\n", ft_strlen(op)))
-		pa(stack_a, stack_b);
+		pa_chk(stack_a, stack_b);
 	else if (3 == ft_strlen(op) && !ft_strncmp(op, "pb\n", ft_strlen(op)))
-		pb(stack_a, stack_b);
+		pb_chk(stack_a, stack_b);
 	else
-		return (0);
-	return (1);
+		return (FALSE);
+	return (TRUE);
 }
 
 static int	is_valid_ops(t_list **stack_a, t_list **stack_b)
 {
 	char	*op;
-	
-	while (1)
+
+	while (TRUE)
 	{
 		op = get_next_line(STDIN);
 		if (!op)
-			return (1);
+			return (TRUE);
 		if (!do_op(stack_a, stack_b, op))
 		{
+			free(op);
 			ft_putendl_fd(ERR_MSG, STDERR);
-			return (0);
+			return (FALSE);
 		}
+		free(op);
 	}
 }
 

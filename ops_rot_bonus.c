@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_ops.c                                       :+:      :+:    :+:   */
+/*   ops_rot_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
+/*   By: rjada <rjada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 23:03:10 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/20 18:22:29 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/21 14:53:05 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "libft/libft.h"
+#include "checker_bonus.h"
 
 static void	rotate_stack(t_list **top)
 {
@@ -29,30 +28,23 @@ static void	rotate_stack(t_list **top)
 	*top = second;
 }
 
-void	ra(t_list **stack_a)
+void	ra_chk(t_list **stack_a)
 {
 	if (*stack_a && (*stack_a)->next)
-	{
 		rotate_stack(stack_a);
-		ft_putendl_fd("ra", STDOUT);
-	}
 }
 
-void	rb(t_list **stack_b)
+void	rb_chk(t_list **stack_b)
 {
 	if (*stack_b && (*stack_b)->next)
-	{
 		rotate_stack(stack_b);
-		ft_putendl_fd("rb", STDOUT);
-	}
 }
 
-void	rr(t_list **stack_a, t_list **stack_b)
+void	rr_chk(t_list **stack_a, t_list **stack_b)
 {
 	if (*stack_a && *stack_b && (*stack_a)->next && (*stack_b)->next)
 	{
 		rotate_stack(stack_a);
 		rotate_stack(stack_b);
-		ft_putendl_fd("rr", STDOUT);
 	}
 }

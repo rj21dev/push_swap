@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
+/*   By: rjada <rjada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 18:29:44 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/21 01:02:00 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/21 14:42:28 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@
 # include "libft/libft.h"
 
 # define ERR_MSG "Error"
-
-# define MANDATORY 1
-# define BONUS 0
 
 void	init_main_stack(t_list **stack_a, size_t argc, char **argv);
 

@@ -1,58 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rev_rotate_ops.c                                   :+:      :+:    :+:   */
+/*   ops_rotate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
+/*   By: rjada <rjada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 23:03:10 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/20 18:22:14 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/21 14:39:37 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft/libft.h"
 
-static void	rev_rotate_stack(t_list **top)
+static void	rotate_stack(t_list **top)
 {
-	t_list	*before_last;
+	t_list	*first;
+	t_list	*second;
 	t_list	*last;
 
-	last = *top;
+	first = *top;
+	second = (*top)->next;
+	last = (*top)->next;
 	while (last->next)
-	{
-		before_last = last;
 		last = last->next;
-	}
-	last->next = *top;
-	*top = last;
-	before_last->next = NULL;
+	last->next = first;
+	first->next = NULL;
+	*top = second;
 }
 
-void	rra(t_list **stack_a)
+void	ra(t_list **stack_a)
 {
 	if (*stack_a && (*stack_a)->next)
 	{
-		rev_rotate_stack(stack_a);
-		ft_putendl_fd("rra", STDOUT);
+		rotate_stack(stack_a);
+		ft_putendl_fd("ra", STDOUT);
 	}
 }
 
-void	rrb(t_list **stack_b)
+void	rb(t_list **stack_b)
 {
 	if (*stack_b && (*stack_b)->next)
 	{
-		rev_rotate_stack(stack_b);
-		ft_putendl_fd("rrb", STDOUT);
+		rotate_stack(stack_b);
+		ft_putendl_fd("rb", STDOUT);
 	}
 }
 
-void	rrr(t_list **stack_a, t_list **stack_b)
+void	rr(t_list **stack_a, t_list **stack_b)
 {
 	if (*stack_a && *stack_b && (*stack_a)->next && (*stack_b)->next)
 	{
-		rev_rotate_stack(stack_a);
-		rev_rotate_stack(stack_b);
-		ft_putendl_fd("rrr", STDOUT);
+		rotate_stack(stack_a);
+		rotate_stack(stack_b);
+		ft_putendl_fd("rr", STDOUT);
 	}
 }

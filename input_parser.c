@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_parser.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
+/*   By: rjada <rjada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 16:51:12 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/21 01:08:07 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/21 14:39:13 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	args_validation(size_t argc, char **argv)
 	{
 		len = ft_strlen(argv[i]);
 		if (!len)
-			exit(EXIT_SUCCESS);
+			ft_error(ERR_MSG);
 		j = 0;
 		while (argv[i][j])
 		{
