@@ -6,7 +6,7 @@
 /*   By: rjada <rjada@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 23:48:36 by rjada             #+#    #+#             */
-/*   Updated: 2022/01/21 19:17:09 by rjada            ###   ########.fr       */
+/*   Updated: 2022/01/22 19:48:09 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,7 @@ static int	is_valid_ops(t_list **stack_a, t_list **stack_b)
 		if (!op)
 			return (TRUE);
 		if (!do_op(stack_a, stack_b, op))
-		{
-			free(op);
-			ft_putendl_fd(ERR_MSG, STDERR);
-			return (FALSE);
-		}
+			ft_error(ERR_MSG);
 		free(op);
 	}
 }
